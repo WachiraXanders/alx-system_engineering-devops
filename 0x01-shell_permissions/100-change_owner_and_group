@@ -1,0 +1,2 @@
+#!/bin/bash
+su vincent -c "sg staff -c 'sudo chown vincent:staff .'"
