@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+# Read the argument from the command line
+input = ARGV[0]
+
+# Define the regular expression pattern to match only capital letters
+pattern = /[A-Z]/
+
+# Find all matches of the pattern in the input
+matches = input.scan(pattern)
+
+# Join the matches together to form the result
+result = matches.join('')
+
+# Print the result
+puts result
