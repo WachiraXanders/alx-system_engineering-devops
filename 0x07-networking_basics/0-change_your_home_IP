@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# This script configures the hostnames in /etc/hosts file for the given requirements
+
+# Function to add or update an entry in /etc/hosts
+add_or_update_host() {
+    local ip=$1
+    local hostname=$2
+
+    # Check if the hostname already exists in /etc/hosts
+    if grep -q "$hostname" /etc/hosts; then
+        # Update the existing entry
+        sudo sed -i "s/^.*$hostname\$/$ip $hostname/" /etc/hosts
+    else
+        # Add a new entry
+        echo "$ip $hostname" | sudo tee -a /etc/hosts > /dev/null
+    fi
+}
+
+# Set localhost to resolve to 127.0.0.2
+add_or_update_host "127.0.0.2" "localhost"
+
+# Set facebook.com to resolve to 8.8.8.8
+add_or_update_host "8.8.8.8" "facebook.com"
+
+echo "Hostnames configured successfully."
