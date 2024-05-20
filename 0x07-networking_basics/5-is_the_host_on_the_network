@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This script pings an IP address passed as an argument. If no argument is provided, it displays usage information.
 
 if [ -z "$1" ]; then
